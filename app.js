@@ -1335,3 +1335,154 @@ document.getElementById(
 
 
 }
+// ===============================
+// CHH SPELGENERATOR
+// ===============================
+
+
+let selectedGame = "V85";
+
+
+// Välj spelform
+
+function selectGame(game){
+
+selectedGame = game;
+
+alert(
+"CHH valt spel: " + game
+);
+
+}
+
+
+
+// Skapa system
+
+function createSystem(){
+
+
+let budget =
+Number(
+document.getElementById("budget").value
+);
+
+
+
+let risk =
+document.getElementById("risk").value;
+
+
+
+if(!budget){
+
+alert(
+"Skriv in spelbudget först"
+);
+
+return;
+
+}
+
+
+
+// Hästar från analysmotorn
+
+let sortedHorses = [];
+
+
+if(typeof ranking !== "undefined"){
+
+sortedHorses = ranking;
+
+}
+
+
+
+
+let output = "";
+
+
+output += `
+<h2>
+🏆 CHH ${selectedGame}-SYSTEM
+</h2>
+
+<p>
+Budget: ${budget} kr
+</p>
+
+<p>
+Risknivå: ${risk}
+</p>
+
+<hr>
+
+`;
+
+
+
+if(sortedHorses.length > 0){
+
+
+output += `
+<h3>
+⭐ CHH Förslag
+</h3>
+`;
+
+
+
+sortedHorses
+.slice(0,5)
+.forEach(function(horse,index){
+
+
+output += `
+
+<p>
+
+${index+1}.
+<b>
+${horse.name}
+</b>
+
+<br>
+
+CHH Poäng ⭐ 
+${horse.score.toFixed(1)}
+
+</p>
+
+`;
+
+});
+
+
+}
+
+else{
+
+
+output += `
+
+<p>
+⚠️ Ingen färdig analys hittades ännu.
+Kör analys först.
+
+</p>
+
+`;
+
+}
+
+
+
+
+document.getElementById(
+"systemResult"
+).innerHTML = output;
+
+
+
+}
