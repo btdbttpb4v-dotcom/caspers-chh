@@ -615,3 +615,190 @@ result;
 
 
 }
+function createStrategy(){
+
+
+if(currentRace.length===0){
+
+alert("Analysera ett lopp först");
+
+return;
+
+}
+
+
+
+let sorted =
+currentRace.sort(function(a,b){
+
+return b.score-a.score;
+
+});
+
+
+
+let top =
+sorted[0];
+
+
+let second =
+sorted[1];
+
+
+
+let difference =
+top.score - second.score;
+
+
+
+let recommendation;
+
+let risk;
+
+
+
+if(difference >=20){
+
+
+recommendation =
+"🔒 SPIK";
+
+
+risk =
+"Låg risk";
+
+
+}
+
+
+else if(difference >=10){
+
+
+recommendation =
+"⭐ SPIK / LITEN GARDERING";
+
+
+risk =
+"Medel risk";
+
+
+}
+
+
+else{
+
+
+recommendation =
+"🛡 GARDERING";
+
+
+risk =
+"Högre risk";
+
+
+}
+
+
+
+
+
+
+let value;
+
+
+
+if(top.score >=80){
+
+
+value =
+"Mycket intressant";
+
+
+}
+
+else if(top.score >=65){
+
+
+value =
+"Spelbar";
+
+
+}
+
+else{
+
+
+value =
+"Avvakta";
+
+
+}
+
+
+
+
+
+document.getElementById(
+"strategyResult"
+).innerHTML = `
+
+
+
+<div class="horse-card">
+
+
+<h3>
+CHH Strategirapport
+</h3>
+
+
+<p>
+
+Förslag:
+${recommendation}
+
+</p>
+
+
+<p>
+
+Huvudval:
+${top.name}
+
+</p>
+
+
+<p>
+
+CHH Score:
+${top.score.toFixed(1)}
+
+</p>
+
+
+<p>
+
+Risk:
+${risk}
+
+</p>
+
+
+<p>
+
+Värde:
+${value}
+
+</p>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+}
