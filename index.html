@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Caspers Häst Hjälp AI</title>
+<title>
+Caspers Häst Hjälp AI
+</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,45 +18,85 @@
 
 <body>
 
+
 <div class="container">
 
 
-<h1>🐎 Caspers Häst Hjälp AI</h1>
+<header>
+
+<h1>
+🐎 Caspers Häst Hjälp AI
+</h1>
 
 <p class="subtitle">
 Din personliga racingassistent
 </p>
 
+</header>
 
-<h2>CHH Analysmotor</h2>
+
+
+<section class="hero">
+
+<h2>
+CHH Analysmotor
+</h2>
 
 <p>
-AI-systemet är redo att analysera hästar, lopp och prestationer.
+AI-systemet analyserar hästar,
+lopp och prestationer.
 </p>
 
 
-<button onclick="analyse()">
+<button onclick="runAnalysis()">
 Starta analys
 </button>
 
 
-<p id="status"></p>
+<div id="status">
+
+Analysmotorn väntar...
+
+</div>
+
+
+</section>
+
+
 
 
 
 <hr>
 
 
-<h2>🐎 Hästregister</h2>
+
+<section id="horse-register">
 
 
-<input id="horseName" placeholder="Hästens namn">
+<h2>
+🐎 Hästregister
+</h2>
 
 
-<input id="horseAge" placeholder="Ålder">
+<div class="input-grid">
 
 
-<input id="horseDistance" placeholder="Bästa distans">
+<input 
+id="horseName"
+type="text"
+placeholder="Hästens namn">
+
+
+<input 
+id="horseAge"
+type="number"
+placeholder="Ålder">
+
+
+<input 
+id="horseDistance"
+type="text"
+placeholder="Bästa distans">
 
 
 <button onclick="addHorse()">
@@ -61,7 +104,13 @@ Lägg till häst
 </button>
 
 
-<h3>Registrerade hästar</h3>
+</div>
+
+
+
+<h3>
+Registrerade hästar
+</h3>
 
 
 <div id="horseList">
@@ -69,27 +118,100 @@ Lägg till häst
 </div>
 
 
+</section>
+
+
+
+
+
 
 <hr>
 
 
 
-<h2>Kommande funktioner</h2>
+
+
+
+<section id="analysis">
+
+
+<h2>
+📊 CHH Analys
+</h2>
+
+
+<div id="ranking">
+
+Ingen analys genomförd
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+<section id="future">
+
+
+<h2>
+🚀 Kommande funktioner
+</h2>
+
 
 <ul>
 
-<li>🏇 Hästregister</li>
+<li>
+🐎 Komplett hästregister
+</li>
 
-<li>📊 Loppanalys</li>
 
-<li>⭐ Poängsystem</li>
+<li>
+📈 Loppanalys
+</li>
 
-<li>🧠 AI-bedömning</li>
+
+<li>
+⭐ CHH Poängsystem
+</li>
+
+
+<li>
+🧠 AI-bedömning
+</li>
+
+
+<li>
+🏆 Vinnarprognoser
+</li>
+
+
+<li>
+📊 Rankingmotor
+</li>
+
 
 </ul>
 
 
+
+</section>
+
+
+
+
 </div>
+
 
 
 <script src="app.js"></script>
@@ -98,8 +220,3 @@ Lägg till häst
 </body>
 
 </html>
-<h2>⭐ CHH Ranking</h2>
-
-<div id="ranking">
-
-</div>
