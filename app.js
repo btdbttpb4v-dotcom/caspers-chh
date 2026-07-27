@@ -802,3 +802,168 @@ ${value}
 
 
 }
+let decisions =
+JSON.parse(localStorage.getItem("chhDecisions")) || [];
+
+
+
+
+
+function generateCoach(){
+
+
+if(currentRace.length===0){
+
+
+alert("Analysera ett lopp först");
+
+
+return;
+
+
+}
+
+
+
+let sorted =
+currentRace.sort(function(a,b){
+
+return b.score-a.score;
+
+});
+
+
+
+let horse =
+sorted[0];
+
+
+
+
+let confidence;
+
+
+
+if(horse.score >=85){
+
+
+confidence =
+"Hög säkerhet";
+
+
+}
+
+else if(horse.score >=70){
+
+
+confidence =
+"Bra möjlighet";
+
+
+}
+
+else{
+
+
+confidence =
+"Osäkert läge";
+
+
+}
+
+
+
+
+
+let decision = {
+
+
+date:new Date().toLocaleDateString("sv-SE"),
+
+
+horse:horse.name,
+
+
+score:horse.score,
+
+
+confidence:confidence
+
+
+};
+
+
+
+
+
+decisions.push(decision);
+
+
+
+localStorage.setItem(
+
+"chhDecisions",
+
+JSON.stringify(decisions)
+
+);
+
+
+
+
+
+document.getElementById(
+"coachResult"
+).innerHTML = `
+
+
+<div class="horse-card">
+
+
+<h3>
+
+🧠 CHH Bedömning
+
+</h3>
+
+
+<p>
+
+Val:
+${horse.name}
+
+</p>
+
+
+<p>
+
+Poäng:
+${horse.score.toFixed(1)}
+
+</p>
+
+
+<p>
+
+Säkerhet:
+${confidence}
+
+</p>
+
+
+<p>
+
+Kommentar:
+Hästen har just nu bäst sammanvägd CHH-profil.
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
