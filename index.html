@@ -316,7 +316,118 @@ Skapa strategi
 
 </button>
 <hr>
+<!-- CHH SPELGENERATOR -->
 
+<section class="game-generator">
+
+<h2>🎯 CHH Spelgenerator</h2>
+
+<p>
+Låt CHH analysera loppet och skapa bästa möjliga system efter din budget.
+</p>
+
+
+<div class="game-box">
+
+
+<h3>Välj spel</h3>
+
+
+<div class="game-buttons">
+
+<button onclick="selectGame('V85')">
+🟦 V85
+</button>
+
+
+<button onclick="selectGame('V86')">
+🟪 V86
+</button>
+
+
+<button onclick="selectGame('GS75')">
+🟩 GS75
+</button>
+
+
+<button onclick="selectGame('V64')">
+🟧 V64
+</button>
+
+
+<button onclick="selectGame('V65')">
+🟥 V65
+</button>
+
+</div>
+
+
+
+<h3>Spelbudget</h3>
+
+
+<input 
+id="budget"
+type="number"
+placeholder="Exempel 300 kr"
+>
+
+
+
+<h3>Risknivå</h3>
+
+
+<select id="risk">
+
+<option value="safe">
+🟢 Säker
+</option>
+
+
+<option value="normal">
+🟡 Balanserad
+</option>
+
+
+<option value="high">
+🔴 Chanssystem
+</option>
+
+
+</select>
+
+
+
+<button 
+class="create-system"
+onclick="createSystem()">
+
+⭐ Skapa CHH-system
+
+</button>
+
+
+</div>
+
+
+
+<div id="systemResult">
+
+
+<h2>
+Ditt CHH-system visas här
+</h2>
+
+
+<p>
+Välj spel och budget för att skapa system.
+</p>
+
+
+</div>
+
+
+</section>
 
 <section id="coach">
 
