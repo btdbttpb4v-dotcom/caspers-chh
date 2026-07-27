@@ -47,7 +47,16 @@ return;
 
 
 let horse = {
+driver:
+document.getElementById("horseDriver").value,
 
+
+trainer:
+document.getElementById("horseTrainer").value,
+
+
+track:
+document.getElementById("horseTrack").value,
 
 name:name,
 
