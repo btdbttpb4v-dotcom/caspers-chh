@@ -451,3 +451,167 @@ document.getElementById("ranking").innerHTML=output;
 
 
 displayHorses();
+let currentRace = [];
+
+
+
+
+
+function addHorseToRace(){
+
+
+let select =
+document.getElementById("raceHorseSelect");
+
+
+let horseName =
+select.value;
+
+
+
+let horse =
+horses.find(function(h){
+
+return h.name === horseName;
+
+});
+
+
+
+if(horse){
+
+
+currentRace.push(horse);
+
+
+displayRace();
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+function displayRace(){
+
+
+let output="";
+
+
+currentRace.forEach(function(horse,index){
+
+
+output += `
+
+<div class="horse-card">
+
+<h3>
+${index+1}. ${horse.name}
+</h3>
+
+<p>
+CHH Score:
+${horse.score.toFixed(1)}
+</p>
+
+</div>
+
+`;
+
+
+});
+
+
+
+document.getElementById("raceList").innerHTML =
+output;
+
+
+
+}
+
+
+
+
+
+
+
+
+function analyzeRace(){
+
+
+
+if(currentRace.length===0){
+
+alert("Lägg till hästar i loppet först");
+
+return;
+
+}
+
+
+
+currentRace.sort(function(a,b){
+
+return b.score-a.score;
+
+});
+
+
+
+let best =
+currentRace[0];
+
+
+
+let result = `
+
+
+<h2>
+🏆 CHH Loppanalys
+</h2>
+
+
+<p>
+
+🥇 Spikförslag:
+
+${best.name}
+
+</p>
+
+
+<p>
+
+⭐ CHH Score:
+
+${best.score.toFixed(1)}
+
+</p>
+
+
+<p>
+
+Rekommendation:
+
+Starkaste kandidaten i loppet.
+
+</p>
+
+
+`;
+
+
+
+document.getElementById("raceResult").innerHTML =
+result;
+
+
+}
