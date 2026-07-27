@@ -1486,3 +1486,208 @@ document.getElementById(
 
 
 }
+// =================================
+// BLOCK 14 - CHH SPELGENERATOR MOTOR
+// =================================
+
+
+let selectedGame = "V85";
+
+
+// Välja spelform
+
+function selectGame(game){
+
+selectedGame = game;
+
+
+document.getElementById("systemResult").innerHTML =
+
+`
+<h2>
+🎯 CHH valt spel: ${game}
+</h2>
+
+<p>
+Välj budget och tryck skapa system.
+</p>
+
+`;
+
+}
+
+
+
+// Skapa systemförslag
+
+function createSystem(){
+
+
+let budget =
+Number(
+document.getElementById("budget").value
+);
+
+
+let risk =
+document.getElementById("risk").value;
+
+
+
+if(!budget){
+
+alert(
+"Skriv in din spelbudget först"
+);
+
+return;
+
+}
+
+
+
+let output = "";
+
+
+
+output += `
+
+<h2>
+🏆 CHH ${selectedGame}-SYSTEM
+</h2>
+
+<p>
+💰 Budget: ${budget} kr
+</p>
+
+<p>
+⚖️ Risk:
+${risk}
+</p>
+
+<hr>
+
+`;
+
+
+
+// Hämtar analysranking
+
+let horsesForSystem = [];
+
+
+
+if(typeof ranking !== "undefined"){
+
+horsesForSystem = ranking;
+
+}
+
+
+
+
+if(horsesForSystem.length > 0){
+
+
+output += `
+
+<h3>
+⭐ Rekommenderade hästar
+</h3>
+
+`;
+
+
+
+horsesForSystem
+.slice(0,7)
+.forEach(function(horse,index){
+
+
+output +=
+
+`
+
+<div class="system-horse">
+
+<h3>
+
+${index + 1}. ${horse.name}
+
+</h3>
+
+
+<p>
+
+CHH Poäng ⭐ 
+${horse.score.toFixed(1)}
+
+</p>
+
+
+</div>
+
+
+`;
+
+});
+
+
+}
+
+else{
+
+
+output += `
+
+<h3>
+⚠️ Ingen färdig analys ännu
+</h3>
+
+
+<p>
+Starta analysmotorn först så bygger CHH systemet.
+</p>
+
+`;
+
+}
+
+
+
+output += `
+
+<hr>
+
+
+<h3>
+🚧 Nästa steg
+</h3>
+
+
+<p>
+
+CHH kommer optimera:
+<br>
+⭐ Spikar
+<br>
+⭐ Garderingar
+<br>
+⭐ Skrällar
+<br>
+⭐ Rader efter budget
+
+</p>
+
+`;
+
+
+
+
+document.getElementById(
+"systemResult"
+).innerHTML = output;
+
+
+
+}
