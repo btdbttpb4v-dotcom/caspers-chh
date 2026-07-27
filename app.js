@@ -1,93 +1,68 @@
-function analyse(){
+function runAnalysis(){
 
-document.getElementById("status").innerHTML =
-"🐎 CHH analysmotor aktiv!<br><br>" +
-"Analysmodul startad.<br>" +
-"Redo att ta emot hästdata.";
+
+let ranking = [];
+
+
+horses.forEach(function(horse){
+
+
+let score = 0;
+
+
+// Form
+score += horse.form * 3;
+
+
+// Klass
+score += horse.class * 2;
+
+
+// Distans
+score += horse.distanceScore * 1.5;
+
+
+// Bana
+score += horse.track * 1.5;
+
+
+// Kuskeffekt
+score += horse.driver * 2;
+
+
+
+let grade;
+
+
+if(score >= 80){
+
+grade = "A ⭐";
+
+}
+
+else if(score >= 60){
+
+grade = "B";
+
+}
+
+else{
+
+grade = "C";
 
 }
 
 
 
-let horses = JSON.parse(localStorage.getItem("horses")) || [];
+ranking.push({
 
+name:horse.name,
 
+score:score,
 
-function addHorse(){
+grade:grade
 
-
-let name =
-document.getElementById("horseName").value;
-
-
-let age =
-document.getElementById("horseAge").value;
-
-
-let distance =
-document.getElementById("horseDistance").value;
-
-
-
-let horse = {
-
-name:name,
-
-age:age,
-
-distance:distance,
-
-score:0
-
-};
-
-
-
-horses.push(horse);
-
-
-
-localStorage.setItem(
-"horses",
-JSON.stringify(horses)
-);
-
-
-
-displayHorses();
-
-
-
-document.getElementById("horseName").value="";
-
-document.getElementById("horseAge").value="";
-
-document.getElementById("horseDistance").value="";
-
-}
-
-
-
-function displayHorses(){
-
-
-let output="";
-
-
-horses.forEach(function(horse,index){
-
-
-output +=
-
-"<div class='horse'>"+
-
-"<b>"+horse.name+"</b><br>"+
-
-"Ålder: "+horse.age+"<br>"+
-
-"Distans: "+horse.distance+
-
-"</div><br>";
+});
 
 
 
@@ -95,11 +70,59 @@ output +=
 
 
 
-document.getElementById("horseList").innerHTML=output;
+// sortera bästa först
+
+ranking.sort(function(a,b){
+
+return b.score-a.score;
+
+});
+
+
+
+let output="";
+
+
+ranking.forEach(function(horse,index){
+
+
+output +=
+
+
+"<div class='horse'>"+
+
+"<h3>"+
+
+(index+1)+". "+
+
+horse.name+
+
+"</h3>"+
+
+
+"CHH Poäng: ⭐ "+
+
+horse.score.toFixed(1)+
+
+"<br>"+
+
+
+"Ranking: "+
+
+horse.grade+
+
+
+"</div>";
+
+
+
+});
+
+
+
+document.getElementById(
+"ranking"
+).innerHTML=output;
 
 
 }
-
-
-
-displayHorses();
