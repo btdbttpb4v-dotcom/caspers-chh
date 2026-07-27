@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Caspers Häst Hjälp AI</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
 <div class="container">
+
 
 <h1>🐎 Caspers Häst Hjälp AI</h1>
 
@@ -17,30 +24,77 @@
 Din personliga racingassistent
 </p>
 
-<div class="card">
+
 <h2>CHH Analysmotor</h2>
-<p>AI-systemet är redo att analysera hästar, lopp och prestationer.</p>
+
+<p>
+AI-systemet är redo att analysera hästar, lopp och prestationer.
+</p>
+
 
 <button onclick="analyse()">
 Starta analys
 </button>
 
+
 <p id="status"></p>
+
+
+
+<hr>
+
+
+<h2>🐎 Hästregister</h2>
+
+
+<input id="horseName" placeholder="Hästens namn">
+
+
+<input id="horseAge" placeholder="Ålder">
+
+
+<input id="horseDistance" placeholder="Bästa distans">
+
+
+<button onclick="addHorse()">
+Lägg till häst
+</button>
+
+
+<h3>Registrerade hästar</h3>
+
+
+<div id="horseList">
+
 </div>
 
-<div class="card">
+
+
+<hr>
+
+
+
 <h2>Kommande funktioner</h2>
+
 <ul>
+
 <li>🏇 Hästregister</li>
+
 <li>📊 Loppanalys</li>
+
 <li>⭐ Poängsystem</li>
+
 <li>🧠 AI-bedömning</li>
+
 </ul>
-</div>
+
 
 </div>
+
 
 <script src="app.js"></script>
 
+
 </body>
+
 </html>
