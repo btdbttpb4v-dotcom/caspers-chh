@@ -967,3 +967,119 @@ Hästen har just nu bäst sammanvägd CHH-profil.
 
 
 }
+function showHistory(){
+
+
+let history =
+JSON.parse(
+localStorage.getItem("chhDecisions")
+) || [];
+
+
+
+let output = "";
+
+
+
+if(history.length === 0){
+
+
+output =
+"Inga tidigare beslut sparade.";
+
+
+}
+
+else{
+
+
+output +=
+
+"<div class='horse-card'>";
+
+
+output +=
+
+"<h3>CHH Statistik</h3>";
+
+
+
+output +=
+
+"Antal analyser: " +
+history.length;
+
+
+
+output +=
+
+"</div>";
+
+
+
+
+
+history.forEach(function(item,index){
+
+
+
+output += `
+
+
+<div class="horse-card">
+
+
+<h3>
+
+${index+1}. ${item.horse}
+
+</h3>
+
+
+<p>
+
+Datum:
+${item.date}
+
+</p>
+
+
+<p>
+
+CHH Score:
+${item.score.toFixed(1)}
+
+</p>
+
+
+<p>
+
+Säkerhet:
+${item.confidence}
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+
+document.getElementById(
+"historyResult"
+).innerHTML = output;
+
+
+
+}
