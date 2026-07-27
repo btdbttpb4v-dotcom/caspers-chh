@@ -1083,3 +1083,231 @@ document.getElementById(
 
 
 }
+function runPrediction(){
+
+
+if(horses.length===0){
+
+alert("Lägg till hästar först");
+
+return;
+
+}
+
+
+
+let prediction=[];
+
+
+
+horses.forEach(function(horse){
+
+
+
+let winChance = Math.min(
+95,
+Math.round(horse.score)
+);
+
+
+
+let placeChance = Math.min(
+98,
+winChance + 15
+);
+
+
+
+let value;
+
+
+
+if(winChance >=80){
+
+value="🔥 Het kandidat";
+
+}
+
+else if(winChance >=65){
+
+value="⭐ Intressant spelvärde";
+
+}
+
+else if(winChance >=50){
+
+value="💡 Skrällmöjlighet";
+
+}
+
+else{
+
+value="⚠ Svag kandidat";
+
+}
+
+
+
+
+
+let rank;
+
+
+
+if(winChance>=80){
+
+rank="A";
+
+}
+
+else if(winChance>=65){
+
+rank="B";
+
+}
+
+else if(winChance>=50){
+
+rank="C";
+
+}
+
+else{
+
+rank="D";
+
+}
+
+
+
+
+
+prediction.push({
+
+
+name:horse.name,
+
+
+winChance:winChance,
+
+
+placeChance:placeChance,
+
+
+value:value,
+
+
+rank:rank
+
+
+
+});
+
+
+
+});
+
+
+
+
+
+prediction.sort(function(a,b){
+
+return b.winChance-a.winChance;
+
+});
+
+
+
+
+
+showPrediction(prediction);
+
+
+}
+
+
+
+
+
+
+
+
+
+function showPrediction(prediction){
+
+
+let output="";
+
+
+
+prediction.forEach(function(horse,index){
+
+
+
+output += `
+
+
+<div class="horse-card">
+
+
+<h3>
+
+${index+1}. ${horse.name}
+
+</h3>
+
+
+
+<p>
+
+🏆 Vinstchans:
+${horse.winChance}%
+
+</p>
+
+
+
+<p>
+
+🥈 Platschans:
+${horse.placeChance}%
+
+</p>
+
+
+
+<p>
+
+Ranking:
+${horse.rank}
+
+</p>
+
+
+
+<p>
+
+${horse.value}
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+document.getElementById(
+"predictionResult"
+).innerHTML=output;
+
+
+
+}
