@@ -405,3 +405,33 @@ button {
 
 
 }
+#race-engine input,
+#race-engine select{
+
+display:block;
+
+width:90%;
+
+margin:10px auto;
+
+padding:15px;
+
+border-radius:10px;
+
+font-size:18px;
+
+}
+
+
+
+#raceResult{
+
+background:#171717;
+
+padding:20px;
+
+border-radius:20px;
+
+margin-top:20px;
+
+}
