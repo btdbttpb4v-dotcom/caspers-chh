@@ -6,12 +6,14 @@ let horses = JSON.parse(localStorage.getItem("chhHorses")) || [];
 
 function saveHorses(){
 
-    localStorage.setItem(
-        "chhHorses",
-        JSON.stringify(horses)
-    );
+localStorage.setItem(
+"chhHorses",
+JSON.stringify(horses)
+);
 
 }
+
+
 
 
 
@@ -20,83 +22,80 @@ function saveHorses(){
 function addHorse(){
 
 
-    let name =
-    document.getElementById("horseName").value;
+let name =
+document.getElementById("horseName").value;
 
 
-    let age =
-    document.getElementById("horseAge").value;
+let age =
+document.getElementById("horseAge").value;
 
 
-    let distance =
-    document.getElementById("horseDistance").value;
-
-
-
-    if(name === ""){
-
-        alert("Skriv hästens namn");
-
-        return;
-
-    }
+let distance =
+document.getElementById("horseDistance").value;
 
 
 
-    let horse = {
+if(name===""){
 
+alert("Skriv hästens namn");
 
-        name:name,
+return;
 
-
-        age:Number(age),
-
-
-        distance:distance,
-
-
-        form:Math.floor(Math.random()*10)+1,
-
-
-        class:Math.floor(Math.random()*10)+1,
-
-
-        distanceScore:Math.floor(Math.random()*10)+1,
-
-
-        score:0,
-
-
-        grade:""
-
-
-
-    };
+}
 
 
 
 
-    horses.push(horse);
+let horse = {
+
+
+name:name,
+
+age:Number(age),
+
+distance:distance,
 
 
 
-    saveHorses();
+// Grundvärden 1-10
+
+form:7,
+
+classValue:7,
+
+distanceScore:7,
+
+trackScore:7,
+
+driverScore:7,
 
 
 
-    displayHorses();
+score:0,
+
+grade:"",
+
+analysis:""
 
 
 
-    document.getElementById("horseName").value="";
+};
 
-    document.getElementById("horseAge").value="";
 
-    document.getElementById("horseDistance").value="";
 
+
+horses.push(horse);
+
+
+saveHorses();
+
+
+displayHorses();
 
 
 }
+
+
 
 
 
@@ -107,53 +106,46 @@ function addHorse(){
 function displayHorses(){
 
 
-    let list =
-    document.getElementById("horseList");
+
+let list =
+document.getElementById("horseList");
+
+
+list.innerHTML="";
 
 
 
-    list.innerHTML="";
+horses.forEach(function(horse){
 
 
+list.innerHTML += `
 
 
-    horses.forEach(function(horse){
+<div class="horse-card">
 
 
-
-        list.innerHTML += `
-
-
-
-        <div class="horse-card">
+<h4>
+🐎 ${horse.name}
+</h4>
 
 
-        <h4>
-        🐎 ${horse.name}
-        </h4>
+<p>
+Ålder: ${horse.age}
+</p>
 
 
-
-        <p>
-        Ålder: ${horse.age}
-        </p>
-
-
-        <p>
-        Distans: ${horse.distance}
-        </p>
+<p>
+Distans: ${horse.distance}
+</p>
 
 
-
-        </div>
-
+</div>
 
 
-        `;
+`;
 
 
-    });
-
+});
 
 
 }
@@ -170,20 +162,13 @@ function runAnalysis(){
 
 
 
-    document.getElementById("status").innerHTML =
+document.getElementById("status").innerHTML =
 
-
-    "🐎 CHH analysmotor aktiv!<br><br>" +
-
-    "Analyserar hästar...<br>" +
-
-    "Beräknar prestationspoäng...";
+"🧠 CHH AI analyserar loppbild...";
 
 
 
-
-
-    calculateRanking();
+calculateAI();
 
 
 
@@ -197,104 +182,114 @@ function runAnalysis(){
 
 
 
-function calculateRanking(){
+function calculateAI(){
 
 
 
-    let ranking = [];
+let ranking=[];
 
 
 
+horses.forEach(function(horse){
 
 
-    horses.forEach(function(horse){
 
+let score = 0;
 
 
-        let score = 0;
 
+// Form 30%
 
+score += horse.form * 3;
 
 
-        // Form
 
-        score += horse.form * 3;
+// Klass 20%
 
+score += horse.classValue * 2;
 
 
 
-        // Klass
+// Distans 15%
 
-        score += horse.class * 2;
+score += horse.distanceScore * 1.5;
 
 
 
+// Bana 15%
 
-        // Distans
+score += horse.trackScore * 1.5;
 
-        score += horse.distanceScore * 1.5;
 
 
+// Kusk 20%
 
+score += horse.driverScore * 2;
 
-        // Ålder
 
-        if(horse.age >=4 && horse.age <=7){
 
-            score += 10;
 
-        }
 
+horse.score = score;
 
 
 
-        horse.score = score;
+if(score >=80){
 
 
+horse.grade="A - Stark kandidat";
 
 
-        if(score >=80){
+}
 
-            horse.grade="⭐ Toppkandidat";
 
-        }
+else if(score >=60){
 
-        else if(score >=60){
 
-            horse.grade="👍 Intressant";
+horse.grade="B - Intressant";
 
-        }
 
-        else{
+}
 
-            horse.grade="⚠ Behöver mer data";
 
-        }
+else{
 
 
+horse.grade="C - Försiktig";
 
 
-        ranking.push(horse);
+}
 
 
 
-    });
 
 
 
+horse.analysis = createComment(horse);
 
 
-    ranking.sort(function(a,b){
 
-        return b.score-a.score;
 
-    });
+ranking.push(horse);
 
 
 
+});
 
 
-    showRanking(ranking);
+
+
+
+ranking.sort(function(a,b){
+
+return b.score-a.score;
+
+});
+
+
+
+
+showAIResult(ranking);
 
 
 
@@ -308,68 +303,146 @@ function calculateRanking(){
 
 
 
-function showRanking(ranking){
+function createComment(horse){
 
 
 
-    let output="";
+let text="";
 
 
 
+if(horse.form>=7){
 
-    ranking.forEach(function(horse,index){
+text += "Bra form. ";
 
-
-
-        output += `
-
+}
 
 
-        <div class="horse-card">
+else{
 
 
-        <h4>
-
-        ${index+1}. ${horse.name}
-
-        </h4>
+text += "Osäker form. ";
 
 
-
-        <p>
-
-        CHH Poäng ⭐ ${horse.score.toFixed(1)}
-
-        </p>
-
-
-
-        <p>
-
-        Ranking:
-        ${horse.grade}
-
-        </p>
-
-
-
-        </div>
-
-
-        `;
-
-
-
-    });
+}
 
 
 
 
-    document.getElementById("ranking").innerHTML = output;
+if(horse.distanceScore>=7){
+
+text += "Passande distans. ";
+
+
+}
+
+
+else{
+
+
+text += "Frågetecken distans. ";
+
+
+}
+
+
+
+
+if(horse.driverScore>=7){
+
+text += "Stark kuskprofil.";
+
+
+}
+
+
+else{
+
+
+text += "Kuskfaktor behöver bevakas.";
+
+
+}
+
+
+
+return text;
+
+
+}
+
+
+
+
+
+
+
+
+
+function showAIResult(ranking){
+
+
+
+let output="";
+
+
+
+ranking.forEach(function(horse,index){
+
+
+
+output += `
+
+
+<div class="horse-card">
+
+
+<h3>
+
+${index+1}. ${horse.name}
+
+</h3>
+
+
+<p>
+
+⭐ CHH Score:
+${horse.score.toFixed(1)}
+
+</p>
+
+
+<p>
+
+${horse.grade}
+
+</p>
+
+
+<p>
+
+🧠 ${horse.analysis}
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+document.getElementById("ranking").innerHTML=output;
 
 
 
 }
+
 
 
 
@@ -378,10 +451,3 @@ function showRanking(ranking){
 
 
 displayHorses();
-if ("serviceWorker" in navigator) {
-
-navigator.serviceWorker.register(
-"service-worker.js"
-);
-
-}
