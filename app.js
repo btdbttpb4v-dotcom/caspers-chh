@@ -411,7 +411,22 @@ output += `
 ${index+1}. ${horse.name}
 
 </h3>
+<p>
+🏇 Kusk:
+${horse.driver || "Ej angiven"}
+</p>
 
+
+<p>
+👨‍🏫 Tränare:
+${horse.trainer || "Ej angiven"}
+</p>
+
+
+<p>
+🚦 Startspår:
+${horse.track || "Ej angivet"}
+</p>
 
 <p>
 
