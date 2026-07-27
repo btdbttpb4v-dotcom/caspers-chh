@@ -378,3 +378,10 @@ function showRanking(ranking){
 
 
 displayHorses();
+if ("serviceWorker" in navigator) {
+
+navigator.serviceWorker.register(
+"service-worker.js"
+);
+
+}
