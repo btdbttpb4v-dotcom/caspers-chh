@@ -1,0 +1,9 @@
+{
+  "name": "Caspers Häst Hjälp AI",
+  "short_name": "CHH AI",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": []
+}
