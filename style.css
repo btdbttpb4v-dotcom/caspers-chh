@@ -1,306 +1,286 @@
-body {
+/* =====================================================
+   🐎 CASPERS HÄST HJÄLP AI
+   CHH DESIGN SYSTEM v2.0
+===================================================== */
 
-    margin:0;
 
-    padding:0;
+*{
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
 
-    background:#0b0b0b;
 
-    color:white;
+body{
 
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+
+background:#090909;
+
+color:white;
+
+text-align:center;
+
+}
+
+
+/* HUVUDCONTAINER */
+
+.container{
+
+width:90%;
+
+max-width:600px;
+
+margin:auto;
+
+padding:25px 0 60px;
 
 }
 
 
 
-.container {
+/* HEADER */
 
-    max-width:600px;
 
-    margin:auto;
+header{
 
-    padding:20px;
+padding:20px 0 40px;
+
+}
+
+
+h1{
+
+font-size:42px;
+
+line-height:1.1;
+
+margin-bottom:15px;
+
+}
+
+
+header p{
+
+font-size:22px;
+
+color:#cccccc;
 
 }
 
 
 
+/* RUBRIKER */
 
 
-header {
+h2{
 
-    text-align:center;
+font-size:32px;
 
-    padding:20px 0 30px 0;
+margin-top:35px;
+
+}
+
+
+h3{
+
+font-size:25px;
 
 }
 
 
 
-header h1 {
-
-    font-size:32px;
-
-    margin-bottom:10px;
-
-}
+/* BOXAR */
 
 
+.card{
 
-header p {
+background:#151515;
 
-    color:#cccccc;
+border-radius:25px;
 
-    font-size:18px;
+padding:25px;
 
-}
+margin:20px 0;
 
-
-
-
-
-
-
-.start-card,
-.result-card,
-.info-card {
-
-
-    background:#171717;
-
-    border-radius:20px;
-
-    padding:25px;
-
-    margin-bottom:25px;
-
-    box-shadow:0 0 15px rgba(255,255,255,0.08);
+border:1px solid #333;
 
 }
 
 
 
+/* SPELVAL */
 
 
+.game-button{
+
+width:100%;
+
+padding:20px;
+
+margin:10px 0;
+
+font-size:22px;
+
+font-weight:bold;
+
+border-radius:18px;
+
+border:none;
+
+background:#222;
+
+color:white;
+
+}
 
 
-h2 {
+.game-button:hover{
 
-    margin-top:0;
+background:#0066ff;
 
 }
 
 
 
-h3 {
-
-    margin-top:25px;
-
-}
+/* INPUT */
 
 
+input{
 
+width:100%;
 
+padding:20px;
 
+margin:12px 0;
 
+border-radius:18px;
 
-.game-buttons {
+border:none;
 
+font-size:22px;
 
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:12px;
-
+text-align:center;
 
 }
 
 
 
+/* HUVUDKNAPP */
 
 
+.main-button{
 
 
-button {
+width:100%;
 
+padding:25px;
 
-    background:#252525;
+margin-top:25px;
 
-    color:white;
+border-radius:25px;
 
-    border:none;
+border:none;
 
-    border-radius:12px;
+font-size:28px;
 
-    padding:15px;
+font-weight:bold;
 
-    font-size:18px;
+background:#2563eb;
 
-    cursor:pointer;
-
-}
-
-
-
-button:hover {
-
-
-    background:#444;
-
-}
-
-
-
-
-
-
-
-.analyse-button {
-
-
-    width:100%;
-
-    background:#c58b00;
-
-    font-size:22px;
-
-    padding:18px;
-
-    margin-top:20px;
-
-
-}
-
-
-
-.analyse-button:hover {
-
-
-    background:#e0a500;
-
-
-}
-
-
-
-
-
-
-
-
-input {
-
-
-    width:100%;
-
-    box-sizing:border-box;
-
-    padding:16px;
-
-    border-radius:12px;
-
-    border:none;
-
-    background:#252525;
-
-    color:white;
-
-    font-size:20px;
-
-    margin-top:10px;
-
-}
-
-
-
-
-
-
-
-
-#result {
-
-
-    background:#101010;
-
-    border-radius:15px;
-
-    padding:20px;
-
-    min-height:120px;
+color:white;
 
 
 }
 
 
 
+.main-button:active{
 
-
-
-
-.system-box {
-
-
-    background:#222;
-
-    border-radius:15px;
-
-    padding:15px;
-
-    margin-top:15px;
-
+transform:scale(.98);
 
 }
 
 
 
+/* RESULTAT */
 
 
+.result{
 
+background:#111;
 
-.info-card {
+border-radius:25px;
 
+padding:25px;
 
-    text-align:center;
+margin-top:30px;
 
-}
+border:2px solid #333;
 
+font-size:22px;
 
-
-
-.info-card p {
-
-
-    margin:8px;
-
-    color:#dddddd;
-
+line-height:1.6;
 
 }
 
 
 
+/* SYSTEMRAD */
 
 
+.system-line{
 
+background:#181818;
 
-@media(max-width:500px){
+padding:15px;
 
+border-radius:15px;
 
-
-header h1 {
-
-font-size:26px;
+margin:10px 0;
 
 }
 
 
 
-.game-buttons {
+/* AI STATUS */
 
-grid-template-columns:1fr;
+
+#status{
+
+font-size:22px;
+
+color:#00ff99;
+
+margin:20px;
+
+}
+
+
+
+/* MOBILOPTIMERING */
+
+
+@media(max-width:600px){
+
+
+h1{
+
+font-size:34px;
+
+}
+
+
+h2{
+
+font-size:28px;
+
+}
+
+
+header p{
+
+font-size:18px;
 
 }
 
