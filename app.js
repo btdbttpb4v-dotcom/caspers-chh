@@ -1,124 +1,137 @@
-// =====================================
-// CHH AI TRAVSYSTEM v1.0
-// =====================================
+// =====================================================
+// 🐎 CASPERS HÄST HJÄLP AI
+// CHH AI SYSTEMMOTOR v2.0
+// =====================================================
 
+
+// -------------------------------
+// GLOBALA VARIABLER
+// -------------------------------
 
 let selectedGame = "";
+let budget = 0;
 
 
-
-
-
-// TESTDATABAS
-// Senare ersätts denna av riktig loppdata
-
+// -------------------------------
+// TESTDATA
+// (ersätts senare med riktig loppdata)
+// -------------------------------
 
 let horses = [
 
-
 {
-name:"Francesco",
+name:"Bold Eagle",
 form:9,
 driver:9,
 trainer:8,
+track:8,
 distance:9,
-track:8
+classValue:9
 },
-
 
 {
-name:"Bold Eagle",
+name:"Francesco",
 form:8,
-driver:10,
+driver:8,
 trainer:9,
+track:7,
 distance:8,
-track:7
+classValue:8
 },
-
 
 {
 name:"Speed King",
 form:7,
-driver:8,
+driver:10,
 trainer:8,
-distance:9,
-track:9
-},
-
-
-{
-name:"Thunder Road",
-form:6,
-driver:7,
-trainer:8,
-distance:8,
-track:7
-},
-
-
-{
-name:"Northern Star",
-form:7,
-driver:7,
-trainer:7,
+track:9,
 distance:7,
-track:8
-}
+classValue:7
+},
 
+{
+name:"Thunder Star",
+form:8,
+driver:7,
+trainer:8,
+track:8,
+distance:9,
+classValue:8
+}
 
 ];
 
 
-
-
-
-
-
-// VÄLJA SPEL
-
+// -------------------------------
+// VÄLJ SPEL
+// -------------------------------
 
 function chooseGame(game){
 
-
 selectedGame = game;
 
+let box=document.getElementById("selectedGame");
 
-alert(
-"CHH analyserar " + game
-);
+if(box){
+
+box.innerHTML =
+"Valt spel: ⭐ " + game;
+
+}
+
+}
+
+
+
+// -------------------------------
+// BUDGET
+// -------------------------------
+
+function setBudget(){
+
+let input=document.getElementById("budget");
+
+budget = Number(input.value);
+
+
+if(budget<=0){
+
+alert("Skriv in en budget först");
+
+return;
+
+}
+
+
+document.getElementById("budgetResult").innerHTML=
+
+"Budget: " + budget + " kr";
 
 
 }
 
 
 
+// -------------------------------
+// ANALYSMOTOR
+// -------------------------------
 
 
-
-
-
-
-// STARTA AI ANALYS
-
-
-function runCHHAnalysis(){
-
-
-
-let budget =
-Number(
-document.getElementById("budget").value
-);
-
+function startAnalysis(){
 
 
 if(selectedGame===""){
 
+alert("Välj spel först");
 
-alert(
-"Välj spelform först"
-);
+return;
 
+}
+
+
+if(budget===0){
+
+alert("Ange budget först");
 
 return;
 
@@ -126,114 +139,53 @@ return;
 
 
 
-
-if(!budget){
-
-
-alert(
-"Skriv in budget först"
-);
-
-
-return;
-
-
-}
-
-
-
-
-
-
-let analysed =
-analyseHorses();
-
-
-
-
-let system =
-buildSystem(
-analysed,
-budget
-);
-
-
-
-
-
-showSystem(
-system,
-budget
-);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// CHH POÄNGSYSTEM
-
-
-function analyseHorses(){
-
-
-
-let result=[];
+let ranking=[];
 
 
 
 horses.forEach(function(horse){
 
 
+let score =
 
-let score = 0;
-
-
-
-score += horse.form * 3;
-
-score += horse.driver * 2;
-
-score += horse.trainer * 2;
-
-score += horse.distance * 2;
-
-score += horse.track;
+(horse.form*3)+
+(horse.driver*2)+
+(horse.trainer*2)+
+(horse.track*1.5)+
+(horse.distance*2)+
+(horse.classValue*2);
 
 
 
-horse.score = score;
+ranking.push({
+
+name:horse.name,
+
+score:score
 
 
-
-result.push(horse);
-
+});
 
 
 });
 
 
 
+// sortera bästa först
 
 
-result.sort(function(a,b){
-
+ranking.sort(function(a,b){
 
 return b.score-a.score;
 
-
 });
 
 
 
-return result;
+// skapa system
+
+
+createSystem(ranking);
 
 
 
@@ -241,234 +193,142 @@ return result;
 
 
 
+// -------------------------------
+// SYSTEMGENERATOR
+// -------------------------------
+
+
+function createSystem(ranking){
+
+
+let system="";
 
 
 
+system +=
+"<h2>🏆 CHH AI SYSTEMFÖRSLAG</h2>";
+
+system +=
+"<p>Spel: "+selectedGame+"</p>";
+
+system +=
+"<p>Budget: "+budget+" kr</p>";
 
 
 
-// SYSTEMBYGGARE
-
-
-function buildSystem(
-ranking,
-budget
-){
+system += "<hr>";
 
 
 
-let system = {
+system +=
+"<h3>⭐ Bästa hästar enligt AI</h3>";
 
 
 
-game:selectedGame,
+ranking.forEach(function(horse,index){
 
 
-spikes:[],
+system +=
+
+"<p>"+
+(index+1)+
+". "+
+horse.name+
+" ⭐ "+
+horse.score.toFixed(1)+
+"</p>";
 
 
-guards:[]
+});
+
+
+
+system += "<hr>";
+
+
+
+system +=
+
+"<h3>🎯 Rekommenderad rad</h3>";
+
+
+
+let antal=3;
+
+
+
+if(budget>=500){
+
+antal=4;
+
+}
+
+if(budget>=1000){
+
+antal=5;
+
+}
+
+
+
+system +=
+
+"Avdelning 1: ";
+
+
+for(let i=0;i<antal;i++){
+
+
+system +=
+
+ranking[i].name;
+
+
+
+if(i<antal-1){
+
+system+=", ";
+
+}
+
+
+}
+
+
+
+system +=
+
+"<br><br>CHH AI har valt raden efter samlad analys av form, kusk, tränare, spår och distans.";
+
+
+
+document.getElementById("systemResult").innerHTML=
+
+system;
+
+
+
+}
+
+
+
+// -------------------------------
+// START
+// -------------------------------
+
+
+window.onload=function(){
+
+
+let status=document.getElementById("status");
+
+
+if(status){
+
+status.innerHTML=
+"🐎 CHH AI analysmotor aktiv";
+
+}
 
 
 };
-
-
-
-
-
-
-// bästa hästen blir spik
-
-
-system.spikes.push(
-ranking[0]
-);
-
-
-
-
-
-// resten blir garderingar
-
-
-ranking.slice(1,4)
-.forEach(function(horse){
-
-
-system.guards.push(horse);
-
-
-});
-
-
-
-
-
-
-system.rows =
-Math.max(
-1,
-Math.floor(
-budget / 2
-)
-);
-
-
-
-
-return system;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// VISA RESULTAT
-
-
-function showSystem(
-system,
-budget
-){
-
-
-
-let output = "";
-
-
-
-output += `
-
-<div class="system-box">
-
-
-<h2>
-🏆 CHH ${system.game}
-SYSTEM
-</h2>
-
-
-<p>
-💰 Budget:
-${budget} kr
-</p>
-
-
-<p>
-📊 Beräknade rader:
-${system.rows}
-</p>
-
-
-<hr>
-
-
-<h3>
-🔒 Spik
-</h3>
-
-
-`;
-
-
-
-
-system.spikes.forEach(function(horse){
-
-
-output += `
-
-<p>
-
-⭐ ${horse.name}
-
-<br>
-
-CHH Score:
-${horse.score}
-
-</p>
-
-`;
-
-});
-
-
-
-
-
-output += `
-
-
-<h3>
-🎯 Garderingar
-</h3>
-
-`;
-
-
-
-
-
-system.guards.forEach(function(horse){
-
-
-output += `
-
-<p>
-
-${horse.name}
-
-<br>
-
-Score:
-${horse.score}
-
-</p>
-
-`;
-
-});
-
-
-
-
-
-
-output += `
-
-
-<hr>
-
-
-<p>
-
-🧠 CHH bedömning:
-
-Systemet är byggt för bästa balans mellan säkerhet och värde.
-
-</p>
-
-
-</div>
-
-`;
-
-
-
-
-
-document.getElementById(
-"result"
-).innerHTML = output;
-
-
-
-}
