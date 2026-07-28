@@ -16,6 +16,7 @@ Caspers Häst Hjälp AI
 
 <link rel="manifest" href="manifest.json">
 
+
 </head>
 
 
@@ -23,7 +24,6 @@ Caspers Häst Hjälp AI
 
 
 <div class="container">
-
 
 
 <header>
@@ -34,7 +34,7 @@ Caspers Häst Hjälp AI
 
 
 <p>
-Din personliga AI för travsystem
+Din personliga racingassistent
 </p>
 
 
@@ -43,91 +43,76 @@ Din personliga AI för travsystem
 
 
 
-
-<section class="start-card">
+<section class="card">
 
 
 <h2>
-🏆 Skapa bästa systemet
+🏇 Välj spel
 </h2>
 
 
-<p>
-CHH analyserar loppet och bygger ett system efter din budget.
-</p>
+<button class="game-button"
+onclick="chooseGame('V85')">
 
-
-
-<h3>
-1. Välj spelform
-</h3>
-
-
-
-<div class="game-buttons">
-
-
-<button onclick="chooseGame('V85')">
 V85
+
 </button>
 
 
-<button onclick="chooseGame('V86')">
+<button class="game-button"
+onclick="chooseGame('V86')">
+
 V86
+
 </button>
 
 
-<button onclick="chooseGame('GS75')">
-GS75
+<button class="game-button"
+onclick="chooseGame('GS75')">
+
+Grand Slam 75
+
 </button>
 
 
-<button onclick="chooseGame('V64')">
+<button class="game-button"
+onclick="chooseGame('V64')">
+
 V64
+
 </button>
 
 
-<button onclick="chooseGame('V65')">
+<button class="game-button"
+onclick="chooseGame('V65')">
+
 V65
+
 </button>
 
+
+<button class="game-button"
+onclick="chooseGame('V4')">
+
+V4
+
+</button>
+
+
+<button class="game-button"
+onclick="chooseGame('V5')">
+
+V5
+
+</button>
+
+
+
+<div id="selectedGame">
+
+Inget spel valt ännu
 
 </div>
-
-
-
-
-
-<h3>
-2. Ange budget
-</h3>
-
-
-<input 
-id="budget"
-type="number"
-placeholder="Exempel 300 kr">
-
-
-
-
-
-
-<h3>
-3. Starta analys
-</h3>
-
-
-
-<button 
-class="analyse-button"
-onclick="runCHHAnalysis()">
-
-🔥 Analysera och skapa system
-
-</button>
-
-
 
 
 </section>
@@ -137,23 +122,77 @@ onclick="runCHHAnalysis()">
 
 
 
-
-<section class="result-card">
+<section class="card">
 
 
 <h2>
-🏆 CHH Rekommenderat System
+💰 Spelbudget
 </h2>
 
 
+<input
 
-<div id="result">
+id="budget"
+
+type="number"
+
+placeholder="Skriv budget i kr">
+
+
+<button class="main-button"
+
+onclick="setBudget()">
+
+Spara budget
+
+</button>
+
+
+<div id="budgetResult">
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="card">
+
+
+<h2>
+🤖 CHH AI Analys
+</h2>
 
 
 <p>
-Välj lopp och budget för att starta analys.
+
+AI analyserar form, kusk, tränare,
+spår, distans och klass.
+
 </p>
 
+
+
+<button class="main-button"
+
+onclick="startAnalysis()">
+
+
+Starta analys
+
+
+</button>
+
+
+
+<div id="status">
+
+CHH AI väntar...
 
 </div>
 
@@ -168,37 +207,16 @@ Välj lopp och budget för att starta analys.
 
 
 
-<section class="info-card">
+<section class="result">
 
 
-<h3>
-🧠 CHH analyserar
-</h3>
+<div id="systemResult">
 
 
-<p>
-✓ Hästform
-</p>
+🏆 Ditt färdiga systemförslag visas här
 
-<p>
-✓ Kusk
-</p>
 
-<p>
-✓ Tränare
-</p>
-
-<p>
-✓ Distans
-</p>
-
-<p>
-✓ Startspår
-</p>
-
-<p>
-✓ Spelvärde
-</p>
+</div>
 
 
 </section>
@@ -218,5 +236,6 @@ Välj lopp och budget för att starta analys.
 
 
 </body>
+
 
 </html>
