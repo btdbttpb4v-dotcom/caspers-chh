@@ -1,286 +1,348 @@
-/* =====================================================
-   🐎 CASPERS HÄST HJÄLP AI
-   CHH DESIGN SYSTEM v2.0
-===================================================== */
-
-
-*{
+* {
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 
-body{
+body {
 
 margin:0;
 
-background:#090909;
+font-family:
+
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Arial,
+sans-serif;
+
+background:#080808;
 
 color:white;
-
-text-align:center;
 
 }
 
 
-/* HUVUDCONTAINER */
+.app {
 
-.container{
-
-width:90%;
-
-max-width:600px;
+max-width:700px;
 
 margin:auto;
 
-padding:25px 0 60px;
-
-}
-
-
-
-/* HEADER */
-
-
-header{
-
-padding:20px 0 40px;
-
-}
-
-
-h1{
-
-font-size:42px;
-
-line-height:1.1;
-
-margin-bottom:15px;
-
-}
-
-
-header p{
-
-font-size:22px;
-
-color:#cccccc;
-
-}
-
-
-
-/* RUBRIKER */
-
-
-h2{
-
-font-size:32px;
-
-margin-top:35px;
-
-}
-
-
-h3{
-
-font-size:25px;
-
-}
-
-
-
-/* BOXAR */
-
-
-.card{
-
-background:#151515;
-
-border-radius:25px;
-
-padding:25px;
-
-margin:20px 0;
-
-border:1px solid #333;
-
-}
-
-
-
-/* SPELVAL */
-
-
-.game-button{
-
-width:100%;
-
 padding:20px;
 
-margin:10px 0;
-
-font-size:22px;
-
-font-weight:bold;
-
-border-radius:18px;
-
-border:none;
-
-background:#222;
-
-color:white;
-
-}
-
-
-.game-button:hover{
-
-background:#0066ff;
-
 }
 
 
 
-/* INPUT */
-
-
-input{
-
-width:100%;
-
-padding:20px;
-
-margin:12px 0;
-
-border-radius:18px;
-
-border:none;
-
-font-size:22px;
+header {
 
 text-align:center;
 
+padding:25px 10px 35px;
+
+}
+
+
+header h1 {
+
+font-size:38px;
+
+margin:0;
+
+font-weight:800;
+
+}
+
+
+header p {
+
+font-size:20px;
+
+color:#bbbbbb;
+
 }
 
 
 
-/* HUVUDKNAPP */
+
+.panel {
+
+background:#151515;
+
+border:1px solid #333;
+
+border-radius:25px;
+
+padding:25px;
+
+margin-bottom:25px;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,0.4);
+
+}
 
 
-.main-button{
+
+.panel h2 {
+
+text-align:center;
+
+font-size:28px;
+
+margin-top:0;
+
+}
+
+
+
+.game-buttons {
+
+
+display:grid;
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+gap:12px;
+
+
+}
+
+
+
+button {
+
+
+border:none;
+
+border-radius:18px;
+
+padding:18px;
+
+font-size:20px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+
+
+.game {
+
+
+background:#252525;
+
+color:white;
+
+border:1px solid #555;
+
+
+}
+
+
+
+.game:hover {
+
+transform:scale(1.03);
+
+background:#333;
+
+}
+
+
+
+
+input {
 
 
 width:100%;
 
-padding:25px;
+padding:20px;
 
-margin-top:25px;
-
-border-radius:25px;
+border-radius:18px;
 
 border:none;
 
-font-size:28px;
+font-size:22px;
 
-font-weight:bold;
+margin-top:15px;
+
+}
+
+
+
+#analyzeButton {
+
+
+width:100%;
 
 background:#2563eb;
 
 color:white;
 
+font-size:24px;
+
+padding:22px;
 
 }
 
 
 
-.main-button:active{
+#analyzeButton:hover {
 
-transform:scale(.98);
+background:#1d4ed8;
 
 }
 
 
 
-/* RESULTAT */
 
 
-.result{
+#aiStatus {
 
-background:#111;
 
-border-radius:25px;
+margin-top:25px;
 
-padding:25px;
-
-margin-top:30px;
-
-border:2px solid #333;
+text-align:center;
 
 font-size:22px;
+
+color:#bbbbbb;
+
+}
+
+
+
+
+
+.result {
+
+
+border:
+
+2px solid #444;
+
+
+}
+
+
+
+#systemResult {
+
+
+background:#101010;
+
+border-radius:20px;
+
+padding:20px;
+
+font-size:22px;
+
+line-height:1.7;
+
+}
+
+
+
+
+#confidence {
+
+
+font-size:45px;
+
+font-weight:800;
+
+text-align:center;
+
+color:#60a5fa;
+
+}
+
+
+
+
+#aiComment {
+
+
+font-size:20px;
 
 line-height:1.6;
 
-}
-
-
-
-/* SYSTEMRAD */
-
-
-.system-line{
-
-background:#181818;
-
-padding:15px;
-
-border-radius:15px;
-
-margin:10px 0;
+color:#ddd;
 
 }
 
 
 
-/* AI STATUS */
+
+#history {
 
 
-#status{
+color:#aaa;
 
-font-size:22px;
-
-color:#00ff99;
-
-margin:20px;
+font-size:18px;
 
 }
 
 
 
-/* MOBILOPTIMERING */
+
+
+footer {
+
+
+text-align:center;
+
+padding:30px;
+
+color:#777;
+
+}
+
+
+
 
 
 @media(max-width:600px){
 
 
-h1{
+header h1 {
 
-font-size:34px;
-
-}
-
-
-h2{
-
-font-size:28px;
+font-size:32px;
 
 }
 
 
-header p{
 
-font-size:18px;
+.game-buttons {
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+}
+
+
+
+.panel {
+
+padding:20px;
+
+}
+
+
+
+.panel h2 {
+
+font-size:24px;
 
 }
 
