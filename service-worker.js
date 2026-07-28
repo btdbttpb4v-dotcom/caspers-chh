@@ -1,7 +1,12 @@
-const CACHE_NAME = "chh-ai-v1";
+// =====================================
+// 🐎 CHH AI SERVICE WORKER
+// =====================================
 
 
-const FILES_TO_CACHE = [
+const CACHE_NAME = "chh-ai-v2";
+
+
+const FILES = [
 
 "./",
 
@@ -26,13 +31,17 @@ function(event){
 
 event.waitUntil(
 
+
 caches.open(CACHE_NAME)
 
 .then(function(cache){
 
-return cache.addAll(FILES_TO_CACHE);
+
+return cache.addAll(FILES);
+
 
 })
+
 
 );
 
@@ -52,6 +61,7 @@ function(event){
 
 event.waitUntil(
 
+
 caches.keys()
 
 .then(function(keys){
@@ -64,7 +74,9 @@ keys.map(function(key){
 
 if(key !== CACHE_NAME){
 
+
 return caches.delete(key);
+
 
 }
 
@@ -76,6 +88,7 @@ return caches.delete(key);
 
 
 })
+
 
 );
 
