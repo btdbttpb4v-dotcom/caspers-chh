@@ -11,8 +11,11 @@
 Caspers Häst Hjälp AI
 </title>
 
+
 <link rel="stylesheet" href="style.css">
+
 <link rel="manifest" href="manifest.json">
+
 </head>
 
 
@@ -22,504 +25,192 @@ Caspers Häst Hjälp AI
 <div class="container">
 
 
+
 <header>
 
 <h1>
 🐎 Caspers Häst Hjälp AI
 </h1>
 
-<p class="subtitle">
-Din personliga racingassistent
+
+<p>
+Din personliga AI för travsystem
 </p>
+
 
 </header>
 
 
 
-<section class="hero">
+
+
+<section class="start-card">
+
 
 <h2>
-CHH Analysmotor
+🏆 Skapa bästa systemet
 </h2>
+
 
 <p>
-AI-systemet analyserar hästar,
-lopp och prestationer.
+CHH analyserar loppet och bygger ett system efter din budget.
 </p>
-
-
-<button onclick="runAnalysis()">
-Starta analys
-</button>
-
-
-<div id="status">
-
-Analysmotorn väntar...
-
-</div>
-
-
-</section>
-
-
-
-
-
-<hr>
-
-
-
-<section id="horse-register">
-
-
-<h2>
-🐎 Hästregister
-</h2>
-<hr>
-
-
-<section id="race-engine">
-
-
-<h2>
-🏇 Dagens lopp
-</h2>
-
-
-<input 
-id="raceName"
-placeholder="Lopp namn">
-
-
-<input 
-id="raceDistance"
-placeholder="Distans">
-
-
-<input 
-id="raceTrack"
-placeholder="Bana">
 
 
 
 <h3>
-Startlista
+1. Välj spelform
 </h3>
 
-
-<select id="raceHorseSelect">
-
-</select>
-
-
-<button onclick="addHorseToRace()">
-
-Lägg häst till lopp
-
-</button>
-
-
-
-<div id="raceList">
-
-</div>
-
-
-
-<button onclick="analyzeRace()">
-
-Analysera lopp
-
-</button>
-
-
-
-<div id="raceResult">
-
-</div>
-
-
-
-</section>
-
-<div class="input-grid">
-
-
-<input 
-id="horseName"
-type="text"
-placeholder="Hästens namn">
-
-
-<input 
-id="horseAge"
-type="number"
-placeholder="Ålder">
-
-
-<input 
-id="horseDistance"
-type="text"
-placeholder="Bästa distans">
-<input 
-id="horseDriver"
-type="text"
-placeholder="Kusk">
-
-
-<input 
-id="horseTrainer"
-type="text"
-placeholder="Tränare">
-
-
-<input 
-id="horseTrack"
-type="text"
-placeholder="Startspår">
-
-<button onclick="addHorse()">
-Lägg till häst
-</button>
-<input 
-id="horseDriver"
-type="text"
-placeholder="Kusk">
-
-
-<input 
-id="horseTrainer"
-type="text"
-placeholder="Tränare">
-
-
-<input 
-id="horseTrack"
-type="text"
-placeholder="Startspår">
-
-</div>
-
-
-
-<h3>
-Registrerade hästar
-</h3>
-
-
-<div id="horseList">
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<hr>
-
-
-
-
-
-
-<section id="analysis">
-
-
-<h2>
-📊 CHH Analys
-</h2>
-<hr>
-
-
-<section id="prediction">
-
-
-<h2>
-🧠 CHH Prediction Engine
-</h2>
-
-
-<button onclick="runPrediction()">
-
-Starta prognos
-
-</button>
-
-
-<div id="predictionResult">
-
-Ingen prognos skapad
-
-</div>
-
-
-</section>
-
-<div id="ranking">
-
-Ingen analys genomförd
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-<hr>
-
-
-
-
-
-<section id="future">
-
-
-<h2>
-🚀 Kommande funktioner
-</h2>
-
-
-<ul>
-
-<li>
-🐎 Komplett hästregister
-</li>
-
-
-<li>
-📈 Loppanalys
-</li>
-<hr>
-
-
-<section id="strategy">
-
-
-<h2>
-🎯 CHH Spelstrategi
-</h2>
-
-
-<button onclick="createStrategy()">
-
-Skapa strategi
-
-</button>
-<hr>
-<!-- CHH SPELGENERATOR -->
-
-<section class="game-generator">
-
-<h2>🎯 CHH Spelgenerator</h2>
-
-<p>
-Låt CHH analysera loppet och skapa bästa möjliga system efter din budget.
-</p>
-
-
-<div class="game-box">
-
-
-<h3>Välj spel</h3>
 
 
 <div class="game-buttons">
 
-<button onclick="selectGame('V85')">
-🟦 V85
+
+<button onclick="chooseGame('V85')">
+V85
 </button>
 
 
-<button onclick="selectGame('V86')">
-🟪 V86
+<button onclick="chooseGame('V86')">
+V86
 </button>
 
 
-<button onclick="selectGame('GS75')">
-🟩 GS75
+<button onclick="chooseGame('GS75')">
+GS75
 </button>
 
 
-<button onclick="selectGame('V64')">
-🟧 V64
+<button onclick="chooseGame('V64')">
+V64
 </button>
 
 
-<button onclick="selectGame('V65')">
-🟥 V65
+<button onclick="chooseGame('V65')">
+V65
 </button>
+
 
 </div>
 
 
 
-<h3>Spelbudget</h3>
+
+
+<h3>
+2. Ange budget
+</h3>
 
 
 <input 
 id="budget"
 type="number"
-placeholder="Exempel 300 kr"
->
+placeholder="Exempel 300 kr">
 
 
 
-<h3>Risknivå</h3>
 
 
-<select id="risk">
 
-<option value="safe">
-🟢 Säker
-</option>
-
-
-<option value="normal">
-🟡 Balanserad
-</option>
-
-
-<option value="high">
-🔴 Chanssystem
-</option>
-
-
-</select>
+<h3>
+3. Starta analys
+</h3>
 
 
 
 <button 
-class="create-system"
-onclick="createSystem()">
+class="analyse-button"
+onclick="runCHHAnalysis()">
 
-⭐ Skapa CHH-system
+🔥 Analysera och skapa system
 
 </button>
 
 
-</div>
+
+
+</section>
 
 
 
-<div id="systemResult">
+
+
+
+
+<section class="result-card">
 
 
 <h2>
-Ditt CHH-system visas här
+🏆 CHH Rekommenderat System
 </h2>
 
 
+
+<div id="result">
+
+
 <p>
-Välj spel och budget för att skapa system.
+Välj lopp och budget för att starta analys.
 </p>
 
 
 </div>
 
 
-</section>
-
-<section id="coach">
-
-
-<h2>
-🧠 CHH Coach
-</h2>
-
-
-<button onclick="generateCoach()">
-
-Analysera beslut
-
-</button>
-
-
-
-<div id="coachResult">
-
-Ingen coachanalys ännu
-
-</div>
-
-
 
 </section>
 
-<div id="strategyResult">
-<hr>
-
-
-<section id="learning">
-
-
-<h2>
-📈 CHH Historik & Lärande
-</h2>
-
-
-<button onclick="showHistory()">
-
-Visa historik
-
-</button>
 
 
 
-<div id="historyResult">
-
-Ingen historik ännu
-
-</div>
 
 
-</section>
-Ingen strategi skapad
 
-</div>
+
+<section class="info-card">
+
+
+<h3>
+🧠 CHH analyserar
+</h3>
+
+
+<p>
+✓ Hästform
+</p>
+
+<p>
+✓ Kusk
+</p>
+
+<p>
+✓ Tränare
+</p>
+
+<p>
+✓ Distans
+</p>
+
+<p>
+✓ Startspår
+</p>
+
+<p>
+✓ Spelvärde
+</p>
 
 
 </section>
 
-<li>
-⭐ CHH Poängsystem
-</li>
 
-
-<li>
-🧠 AI-bedömning
-</li>
-
-
-<li>
-🏆 Vinnarprognoser
-</li>
-
-
-<li>
-📊 Rankingmotor
-</li>
-
-
-</ul>
-
-
-
-</section>
 
 
 
 
 </div>
+
+
 
 
 
