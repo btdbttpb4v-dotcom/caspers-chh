@@ -11,11 +11,9 @@
 Caspers Häst Hjälp AI
 </title>
 
-
 <link rel="stylesheet" href="style.css">
 
 <link rel="manifest" href="manifest.json">
-
 
 </head>
 
@@ -23,7 +21,7 @@ Caspers Häst Hjälp AI
 <body>
 
 
-<div class="container">
+<div class="app">
 
 
 <header>
@@ -32,18 +30,15 @@ Caspers Häst Hjälp AI
 🐎 Caspers Häst Hjälp AI
 </h1>
 
-
 <p>
-Din personliga racingassistent
+Din personliga AI-assistent för travsystem
 </p>
-
 
 </header>
 
 
 
-
-<section class="card">
+<section class="panel">
 
 
 <h2>
@@ -51,68 +46,51 @@ Din personliga racingassistent
 </h2>
 
 
-<button class="game-button"
-onclick="chooseGame('V85')">
+<div class="game-buttons">
 
+
+<button class="game"
+onclick="selectGame('V85')">
 V85
-
 </button>
 
 
-<button class="game-button"
-onclick="chooseGame('V86')">
-
+<button class="game"
+onclick="selectGame('V86')">
 V86
-
 </button>
 
 
-<button class="game-button"
-onclick="chooseGame('GS75')">
-
-Grand Slam 75
-
-</button>
-
-
-<button class="game-button"
-onclick="chooseGame('V64')">
-
+<button class="game"
+onclick="selectGame('V64')">
 V64
-
 </button>
 
 
-<button class="game-button"
-onclick="chooseGame('V65')">
-
+<button class="game"
+onclick="selectGame('V65')">
 V65
-
 </button>
 
 
-<button class="game-button"
-onclick="chooseGame('V4')">
-
-V4
-
+<button class="game"
+onclick="selectGame('V75')">
+V75
 </button>
 
 
-<button class="game-button"
-onclick="chooseGame('V5')">
-
-V5
-
+<button class="game"
+onclick="selectGame('DD')">
+DD
 </button>
 
-
-
-<div id="selectedGame">
-
-Inget spel valt ännu
 
 </div>
+
+
+<p id="selectedGame">
+Inget spel valt
+</p>
 
 
 </section>
@@ -121,12 +99,11 @@ Inget spel valt ännu
 
 
 
-
-<section class="card">
+<section class="panel">
 
 
 <h2>
-💰 Spelbudget
+💰 Budget
 </h2>
 
 
@@ -136,21 +113,12 @@ id="budget"
 
 type="number"
 
-placeholder="Skriv budget i kr">
+placeholder="Skriv budget i kronor"
 
+value="200"
 
-<button class="main-button"
+>
 
-onclick="setBudget()">
-
-Spara budget
-
-</button>
-
-
-<div id="budgetResult">
-
-</div>
 
 
 </section>
@@ -159,40 +127,40 @@ Spara budget
 
 
 
-
-
-<section class="card">
+<section class="panel">
 
 
 <h2>
-🤖 CHH AI Analys
+🤖 CHH AI Analysmotor
 </h2>
 
 
 <p>
 
 AI analyserar form, kusk, tränare,
-spår, distans och klass.
+spår, distans, historik och värde.
 
 </p>
 
 
 
-<button class="main-button"
+<button
 
-onclick="startAnalysis()">
+id="analyzeButton"
 
+onclick="startAnalysis()"
 
-Starta analys
+>
 
+🚀 Starta AI-analys
 
 </button>
 
 
 
-<div id="status">
+<div id="aiStatus">
 
-CHH AI väntar...
+AI väntar...
 
 </div>
 
@@ -205,15 +173,18 @@ CHH AI väntar...
 
 
 
+<section class="panel result">
 
 
-<section class="result">
+<h2>
+🎯 CHH Systemförslag
+</h2>
 
 
 <div id="systemResult">
 
 
-🏆 Ditt färdiga systemförslag visas här
+Ingen analys genomförd ännu.
 
 
 </div>
@@ -226,9 +197,92 @@ CHH AI väntar...
 
 
 
+<section class="panel">
+
+
+<h2>
+⭐ AI Confidence
+</h2>
+
+
+<div id="confidence">
+
+-- %
+
 </div>
 
 
+</section>
+
+
+
+
+
+
+<section class="panel">
+
+
+<h2>
+📋 AI Kommentar
+
+</h2>
+
+
+<div id="aiComment">
+
+
+När analysen är klar visas AI:s beslut här.
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<section class="panel">
+
+
+<h2>
+📚 Tidigare analyser
+
+</h2>
+
+
+<div id="history">
+
+
+Ingen historik ännu.
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<footer>
+
+
+<p>
+
+CHH AI Racing Platform v1.0
+
+</p>
+
+
+</footer>
+
+
+</div>
 
 
 
@@ -236,6 +290,5 @@ CHH AI väntar...
 
 
 </body>
-
 
 </html>
