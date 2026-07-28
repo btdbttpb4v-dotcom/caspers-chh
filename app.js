@@ -512,3 +512,75 @@ updateStatus(
 
 
 };
+// =====================================================
+// 🐎 CHH AI SYSTEMKOPPLING
+// Kopplar ranking + budget till färdigt system
+// =====================================================
+
+
+function createCHHSystem(){
+
+let budgetInput =
+document.getElementById("budget");
+
+
+let budget =
+Number(budgetInput.value);
+
+
+
+if(!budget || budget <= 0){
+
+alert("Skriv in en budget först");
+
+return;
+
+}
+
+
+
+let result =
+generateSystem(
+horses,
+budget
+);
+
+
+
+let output =
+document.getElementById("systemResult");
+
+
+
+output.innerHTML = `
+
+<h2>🎯 CHH AI Rekommenderat system</h2>
+
+<p>
+Budget: ${result.budget} kr
+</p>
+
+
+<hr>
+
+
+<h3>🏇 System:</h3>
+
+
+${result.system.map(function(row){
+
+return `
+
+<p>
+Avdelning ${row.avdelning}: 
+${row.hästar.join(", ")}
+</p>
+
+`;
+
+}).join("")}
+
+
+`;
+
+}
